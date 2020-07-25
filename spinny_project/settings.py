@@ -26,7 +26,20 @@ SECRET_KEY = 'o+v3#^g9l7kt9+n6w6j!*1w((q9ym_p&c6m)9@wc#vgc7j&21g'
 DEBUG = True
 
 ALLOWED_HOSTS = []
+A1 = 100
+V1 = 1000
+L1 = 100
+L2 = 50
 
+
+class InvalidInputException(Exception):
+    pass
+
+class LoginRequiredException(Exception):
+    pass
+
+class PermissionDeniedException(Exception):
+    pass
 
 # Application definition
 
@@ -37,6 +50,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'store',
+    
 ]
 
 MIDDLEWARE = [
