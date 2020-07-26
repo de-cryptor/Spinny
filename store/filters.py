@@ -22,6 +22,7 @@ class BoxFilter(django_filters.FilterSet):
     volume = django_filters.NumberFilter()
     volume__gt = django_filters.NumberFilter(field_name='volume', lookup_expr='gt')
     volume__lt = django_filters.NumberFilter(field_name='volume', lookup_expr='lt')
+    
     class Meta:
         model = Box
         fields = []
