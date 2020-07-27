@@ -32,13 +32,13 @@ curl --location --request GET 'http://127.0.0.1:8000/store/box/list/?length__lt=
 </code></pre>
 
 Filters 
-a.length__lt
-b.length__gt
-c.width__lt
-e.width__gt
-f.height__lt
-g.height__gt
-h.created_by
+1.length__lt
+2.length__gt
+3.width__lt
+4.width__gt
+5.height__lt
+6.height__gt
+7.created_by
 
 4. Box Listing for specific user.
 <pre><code>
@@ -47,12 +47,12 @@ curl --location --request GET 'http://127.0.0.1:8000/store/box/my_list/?length__
 </code></pre>
 
 Filters 
-a.length__lt
-b.length__gt
-c.width__lt
-e.width__gt
-f.height__lt
-g.height__gt
+1.length__lt
+2.length__gt
+3.width__lt
+4.width__gt
+5.height__lt
+6.height__gt
 
 4. Box Deletion API
 
