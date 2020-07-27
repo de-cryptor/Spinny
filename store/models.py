@@ -1,18 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 from datetime import datetime
-# Create your models here.
-
-class UserAuthentication(models.Model):
-    """
-    This model stored auth token for API authentication
-    """
-    user = models.ForeignKey(User,on_delete=models.CASCADE)
-    auth_token = models.CharField(max_length=100)
-    created_on = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return (self.user.username +"-"+ self.auth_token)
+from django.db.models.signals import post_save
+from .signals import save_area_volume
 
 
 class Box(models.Model):
@@ -38,21 +28,14 @@ class Box(models.Model):
     def get_volume(self):
 
         return (self.length * self.width * self.height)
+    
+    def save(self, *args, **kwargs):
+        self.area = self.get_area()
+        self.volume = self.get_volume()
+        self.updated_on = datetime.now()
+        super(Box, self).save(*args, **kwargs)
 
-    def custom_serializer(self):
-        data = dict()
-        data['id'] = self.id
-        data['length'] = str(self.length)
-        data['width'] = str(self.width)
-        data['height'] = str(self.height)
-        data['area'] = str(self.area)
-        data['volume'] = str(self.volume)
-        data['created_by'] = self.created_by.username
-        data['created_on'] = self.created_on
-        data['updated_on'] = self.updated_on
-
-
-        return data
+post_save.connect(save_area_volume,sender=Box)
 
 
     
