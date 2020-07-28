@@ -57,7 +57,7 @@ Filters
 4. Box Deletion API
 
 <pre><code>
-curl --location --request GET 'http://127.0.0.1:8000/store/box/my_list/?length__lt=1000&area__gt=10&volume__lt=100&created_by=store' \
+curl --location --request DELETE 'http://127.0.0.1:8000/store/box/delete/5' \
 --header 'Authorization: Token 97b722f9af48b16f47e563bb69bd615e60fbeca8'
 </code></pre>
 
@@ -65,8 +65,14 @@ curl --location --request GET 'http://127.0.0.1:8000/store/box/my_list/?length__
 5. Box Updation API
 
 <pre><code>
-curl --location --request DELETE 'http://127.0.0.1:8000/store/box/delete/5' \
---header 'Authorization: Token 97b722f9af48b16f47e563bb69bd615e60fbeca8'
+curl --location --request PUT 'http://127.0.0.1:8000/store/box/update/7' \
+--header 'Authorization: Token 97b722f9af48b16f47e563bb69bd615e60fbeca8' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "length":10,
+    "width":3,
+    "height":1
+}'
 </code></pre>
 
 
